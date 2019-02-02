@@ -7,6 +7,9 @@
             <div class="tile">
                 <div class="tile-title">
                     Create Article
+                    <div class="pull-right">
+                        <a href="{{route('article.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Create Article</a>
+                    </div>
                 </div>
                 <div class="tile-body">
                     <form action="{{route('article.store')}}" method="post">
@@ -30,6 +33,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Article</button>
+                            <a href="{{route('article.article')}}" class="btn btn-warning"><i class="fa fa-close"></i> Cancel</a>
                         </div>
                     </form>
                 </div>

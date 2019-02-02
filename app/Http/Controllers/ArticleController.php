@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
@@ -14,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
+        return view('article.article');
     }
 
     /**
@@ -42,12 +43,12 @@ class ArticleController extends Controller
         ]);
 
         $article = new Article();
-        $article->user_id = auth()->id();
-        $article->title_content = $request->title_article;
+        $article->user_id = Auth::user()->id;
+        $article->title_article = $request->title_article;
         $article->content_article = $request->content_article;
         $article->save();
 
-        dd($article);
+        return redirect()->back()->with('success', 'Data berhasil disimpan !');
     }
 
     /**
