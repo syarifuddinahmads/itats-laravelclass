@@ -15,9 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::get('/admin', function (){
-//    return view('tampilan.admin');
-//});
+Route::get('/admin', function (){
+    return view('tampilan.admin');
+});
 
 Route::get('/admin', function (){
     return view('stisla');
@@ -26,3 +26,6 @@ Route::get('/admin', function (){
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::get('article/create', 'ArticleController@create')->name('article.addArticle');
