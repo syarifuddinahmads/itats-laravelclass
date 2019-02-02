@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Article;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -34,7 +35,19 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
+
+        $request->validate([
+            'title_article' => 'required|min:6',
+            'content_article' => 'required|min:50',
+        ]);
+
+        $article = new Article();
+        $article->user_id = auth()->id();
+        $article->title_content = $request->title_article;
+        $article->content_article = $request->content_article;
+        $article->save();
+
+        dd($article);
     }
 
     /**

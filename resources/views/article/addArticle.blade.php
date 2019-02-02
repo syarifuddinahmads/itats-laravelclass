@@ -9,17 +9,23 @@
                     Create Article
                 </div>
                 <div class="tile-body">
-                    <form action="" method="post">
+                    <form action="{{route('article.store')}}" method="post">
                         @csrf
 
                         <div class="form-group">
                             <label for="" class="label-control">Title</label>
-                            <input type="text" class="form-control" name="title">
+                            <input type="text" class="form-control {{$errors->has('title_article') ? 'is-invalid':''}}" name="title_article">
+                            @if($errors->has('title_article'))
+                                <div class="form-control-feedback">{{$errors->first('title_article')}}</div>
+                            @endif
                         </div>
 
                         <div class="form-group">
                             <label for="" class="label-control">Content</label>
-                            <textarea name="content" id="" class="form-control"></textarea>
+                            <textarea name="content_article" id="" class="form-control {{$errors->has('content_article') ? 'is-invalid':''}}"></textarea>
+                            @if($errors->has('content_article'))
+                                <div class="form-control-feedback">{{$errors->first('content_article')}}</div>
+                            @endif
                         </div>
 
                         <div class="form-group">
