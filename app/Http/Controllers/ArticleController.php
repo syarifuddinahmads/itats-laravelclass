@@ -15,7 +15,11 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('article.article');
+        $article = Article::all();
+        return view('article.article',[
+            'title' => 'List Article',
+            'articles' => $article
+        ]);
     }
 
     /**
@@ -70,7 +74,12 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article =  Article::find($id);
+
+        return view('article.editArticle',[
+           'title' => 'Edit Article ' . $id,
+           'article' => $article
+        ]);
     }
 
     /**
@@ -82,7 +91,18 @@ class ArticleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title_article' => 'required|min:6',
+            'content_article' => 'required|min:50',
+        ]);
+
+        $article = Article::find($id);
+        $article->user_id = auth()->id();
+        $article->title_article = $request->title_article;
+        $article->content_article = $request->content_article;
+        $article->save();
+
+        return redirect('article')->with('info', 'Update article successfully !');
     }
 
     /**

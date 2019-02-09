@@ -6,18 +6,18 @@
         <div class="col-md-12">
             <div class="tile">
                 <div class="tile-title">
-                    Create Article
+                    {{$title}}
                     <div class="pull-right">
                         {{--<a href="{{route('article.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Create Article</a>--}}
                     </div>
                 </div>
                 <div class="tile-body">
-                    <form action="{{route('article.store')}}" method="post">
+                    <form action="{{route('article.update', $article->id)}}" method="post">
                         @csrf
-
+                        {{--@method('PUT')--}}
                         <div class="form-group">
                             <label for="" class="label-control">Title</label>
-                            <input type="text" class="form-control {{$errors->has('title_article') ? 'is-invalid':''}}" name="title_article" value="{{old('title_article')}}">
+                            <input type="text" class="form-control {{$errors->has('title_article') ? 'is-invalid':''}}" name="title_article" value="{{old('title_article') ?? $article->title_article}}">
                             @if($errors->has('title_article'))
                                 <div class="form-control-feedback">{{$errors->first('title_article')}}</div>
                             @endif
@@ -25,7 +25,7 @@
 
                         <div class="form-group">
                             <label for="" class="label-control">Content</label>
-                            <textarea name="content_article" id="" class="form-control {{$errors->has('content_article') ? 'is-invalid':''}}">{{old('content_article')}}</textarea>
+                            <textarea name="content_article" id="" class="form-control {{$errors->has('content_article') ? 'is-invalid':''}}">{{old('content_article') ?? $article->content_article}}</textarea>
                             @if($errors->has('content_article'))
                                 <div class="form-control-feedback">{{$errors->first('content_article')}}</div>
                             @endif
