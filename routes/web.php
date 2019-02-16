@@ -35,3 +35,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Route::delete('article/{id}/delete','ArticleController@destroy')->name('article.delete')->middleware('auth');
 
 Route::resource('article', 'ArticleController')->middleware('auth');
+
+Route::get('users', 'UserController@index')->middleware('auth');
+Route::get('user/{id}', 'UserController@show')->middleware('auth');

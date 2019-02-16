@@ -7,33 +7,25 @@
             <div class="tile">
                 <div class="tile-title">
                     {{$title}}
-                    <div class="pull-right">
-                        <a href="{{route('article.create')}}" class="btn btn-primary"><i class="fa fa-plus"></i> Create Article</a>
-                    </div>
                 </div>
                 <div class="tile-body">
                     <table class="table table-bordered">
                         <thead>
-                            <tr>
-                                <th class="text-center">NO</th>
-                                <th>Title</th>
-                                <th>Content</th>
-                                <th>Author</th>
-                                <th class="text-center">Action</th>
-                            </tr>
+                        <tr>
+                            <th class="text-center">NO</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th class="text-center">Detail</th>
+                        </tr>
                         </thead>
                         <tbody>
                         @php($id =1)
-                        @forelse($articles as $article)
+                        @forelse($users as $user)
                             <tr>
                                 <td class="text-center">{{$id++}}</td>
-                                <td>{{$article->title_article}}</td>
-                                <td>{{str_limit($article->content_article,100)}}</td>
-                                <td>{{$article->user->name}}</td>
-                                <td class="text-center">
-                                    <a href="{{route('article.edit', $article)}}" class="btn btn-info btn-sm"><i class="fa fa-pencil"></i></a>
-                                    <button id="delete" href="{{route('article.destroy', $article)}}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i></button>
-                                </td>
+                                <td>{{$user->name}}</td>
+                                <td>{{$user->email}}</td>
+                                <td class="text-center"><a href="{{url('user', $user->id)}}" class="btn btn-info btn-sm">Show Detail</a></td>
                             </tr>
                         @empty
                             <tr>
@@ -42,7 +34,7 @@
                         @endforelse
                         </tbody>
                     </table>
-                    {{$articles->links()}}
+                    {{$users->links()}}
                 </div>
             </div>
         </div>
