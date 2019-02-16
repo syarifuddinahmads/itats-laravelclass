@@ -103,7 +103,7 @@
         </div>
     </div>
     <ul class="app-menu">
-        <li><a class="app-menu__item" href=""><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
+        <li><a class="app-menu__item" href="{{url('home')}}"><i class="app-menu__icon fa fa-dashboard"></i><span class="app-menu__label">Dashboard</span></a></li>
         {{--<li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-laptop"></i><span class="app-menu__label">UI Elements</span><i class="treeview-indicator fa fa-angle-right"></i></a>--}}
             {{--<ul class="treeview-menu">--}}
                 {{--<li><a class="treeview-item" href="bootstrap-components.html"><i class="icon fa fa-circle-o"></i> Bootstrap Elements</a></li>--}}
@@ -139,14 +139,14 @@
                 {{--<li><a class="treeview-item" href="page-error.html"><i class="icon fa fa-circle-o"></i> Error Page</a></li>--}}
             {{--</ul>--}}
         {{--</li>--}}
-        <li><a class="app-menu__item" href="{{route('article.article')}}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label">Article</span></a></li>
+        <li><a class="app-menu__item" href="{{route('article.index')}}"><i class="app-menu__icon fa fa-newspaper-o"></i><span class="app-menu__label">Article</span></a></li>
     </ul>
 </aside>
 <main class="app-content">
     <div class="app-title">
         <div>
             <h1><i class="fa fa-dashboard"></i> Dashboard</h1>
-            <p>A free and open source Bootstrap 4 admin template</p>
+            {{--<p>A free and open source Bootstrap 4 admin template</p>--}}
         </div>
         <ul class="app-breadcrumb breadcrumb">
             <li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
@@ -304,5 +304,6 @@
         {{--ga('send', 'pageview');--}}
     {{--}--}}
 {{--</script>--}}
+@yield("scripts")
 </body>
 </html>

@@ -15,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $article = Article::all();
+//        $article = Article::all();
+        $article = Article::paginate(10);
         return view('article.article',[
             'title' => 'List Article',
             'articles' => $article
@@ -52,7 +53,7 @@ class ArticleController extends Controller
         $article->content_article = $request->content_article;
         $article->save();
 
-        return redirect()->back()->with('success', 'Data berhasil disimpan !');
+        return redirect('article')->with('success', 'Data berhasil disimpan !');
     }
 
     /**

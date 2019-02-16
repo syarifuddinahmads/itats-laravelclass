@@ -33,7 +33,7 @@
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i> Save Article</button>
-                            <a href="{{route('article.article')}}" class="btn btn-warning"><i class="fa fa-close"></i> Cancel</a>
+                            <a href="{{route('article.index')}}" class="btn btn-warning"><i class="fa fa-close"></i> Cancel</a>
                         </div>
                     </form>
                 </div>
