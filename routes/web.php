@@ -11,9 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','WelcomeController@index');
+Route::get('article-detail/{id}','WelcomeController@index');
 
 Route::get('/admin', function (){
     return view('tampilan.admin');
